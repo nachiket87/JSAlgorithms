@@ -1,7 +1,8 @@
 // Greedy Algorithm to merge meetings times that overlap
 
 interface m1 {
-  startTime: number, endTime: number
+  startTime: number, 
+  endTime: number
 }
 
 
@@ -34,10 +35,7 @@ for(let i=1; i<sortedTimes.length; i++) {
 
 console.log(mergedMeetings); 
 
-/* 
-answer should be =  [
+/* answer should be =  [
   { startTime: 0, endTime: 1 },
   { startTime: 3, endTime: 8 },
-  { startTime: 9, endTime: 12 },
-] 
-*/
+  { startTime: 9, endTime: 12 }] */
