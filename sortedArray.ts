@@ -1,26 +1,29 @@
-const mergeArrays = (herArray: Array<number>, myArray: Array<number>) => {
-  const mergedArray: Array<number> = [];
+// merge sored arrays 
 
+const mergeArrays = (herArray: Array<number>, myArray: Array<number>) => {
+
+  const mergedArray: Array<number> = []; 
   let currentIndexHer: number = 0;
   let currentIndexMine: number = 0;
   let currentmergedIndex: number = 0;
 
-  while(currentmergedIndex < (herArray.length + myArray.length)) {
 
-    if(currentIndexMine >= myArray.length){
+  while(currentmergedIndex < (herArray.length + myArray.length)) {
+// final array is going to by the combined length of both the arrays.
+    if(currentIndexMine >= myArray.length){ 
       mergedArray[currentmergedIndex] = herArray[currentIndexHer];
-      currentIndexHer++;
+      currentIndexHer++; // check if my array is exhausted, then add hers
     } else if (currentIndexHer >= herArray.length) {
       mergedArray[currentmergedIndex] = myArray[currentIndexMine];
-      currentIndexMine++;
+      currentIndexMine++; // if her array is exhausted add mine
     } else if (herArray[currentIndexHer] < myArray[currentIndexMine]) {
       mergedArray[currentmergedIndex] = herArray[currentIndexHer];
-      currentIndexHer++;
+      currentIndexHer++; //compare and add the smaller number at the current indexes
     } else {
       mergedArray[currentmergedIndex] = myArray[currentIndexMine];
-      currentIndexMine++;
+      currentIndexMine++; // if hers aren't smaller, then add mine to merged array
     }
-    currentmergedIndex++;
+    currentmergedIndex++; // always increase merged array index counter. 
   }
   return mergedArray
 }
