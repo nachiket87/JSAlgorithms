@@ -1,6 +1,15 @@
+/* 
+A person is on a fligth of flightLength minutes.
+an array of flightMovies is the length of the movies available on the flight.
+create a function to check if a person can watch EXACTLY 2 movies on this flight.
+return a boolean.
+make sure the person doesn't watch the same movie twice. 
+*/
 const flightLength: number = 120;
 
-const flightMovies: Array<number> = [100, 37, 83, 28, 82, 40];
+const flightMovies: Array<number> = [100, 87, 60, 28, 82, 40];
+
+// the issue is if the person watches the same movie twice. Will fix soon.
 
 
 
