@@ -1,13 +1,10 @@
 {
   "compilerOptions": {
-    "lib":["dom", "es7"],
-    "target": "ES2017",
+    "target": "es5",
     "module": "commonjs",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
-  },
-  "$schema": "https://json.schemastore.org/tsconfig",
-  "display": "Recommended"
+  }
 }
