@@ -24,3 +24,5 @@ const sortScores = (unorderedScores: number[], highestPossibleScore: number) => 
   return sortedScores;
 }
 console.log(sortScores(unsortedScores, HIGHEST_POSSIBLE_SCORE));
+
+// just for git emoji

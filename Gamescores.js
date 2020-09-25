@@ -16,3 +16,4 @@ var sortScores = function (unorderedScores, highestPossibleScore) {
     return sortedScores;
 };
 console.log(sortScores(unsortedScores, HIGHEST_POSSIBLE_SCORE));
+// just for git emoji
