@@ -3,6 +3,10 @@
     "@tsconfig/recommended": "^1.0.1"
   },
   "dependencies": {
-    "@types/node": "^14.11.2"
+    "@types/node": "^14.11.2",
+    "jest": "^26.5.3"
+  },
+  "scripts": {
+    "test": "jest"
   }
 }
