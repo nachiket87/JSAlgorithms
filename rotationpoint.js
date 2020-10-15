@@ -1,29 +1,49 @@
 const rotationPoint = (words) => {
-  let wordsLength = words.length;
-  let startIndex = Math.floor(wordsLength / 2);
-  let indexBefore = startIndex - 1;
+  let guessIndex = Math.floor((words.length + 1) / 2);
+  let nextIndex = guessIndex + 1;
+  let firstIndex = 0;
+  let lastIndex = words.length - 1;
 
-  while (true) {
-    if (words[startIndex][0] <= words[indexBefore][0]) {
-      wordsLength = startIndex;
-      if (words[startIndex - 1][0] > words[startIndex][0]) {
-        return startIndex;
-      } else {
-        startIndex -= 1;
+  while (firstIndex < lastIndex) {
+    if (words[guessIndex][0] <= words[nextIndex][0]) {
+      // we found one!
+      lastIndex = nextIndex;
+      nextIndex = guessIndex;
+      guessIndex--;
+      if (!guessIndex) {
+        return words[nextIndex];
+      }
+      if (words[guessIndex][0] > words[nextIndex][0]) {
+        // check if the previous one is also alphabetical
+        return words[nextIndex];
       }
     } else {
-      wordsLength = startIndex;
-      startIndex = Math.floor(wordsLength / 2);
-      indexBefore = startIndex - 1;
+      firstIndex = guessIndex;
+      guessIndex = firstIndex + Math.floor((lastIndex - firstIndex) / 2);
+      nextIndex = guessIndex + 1;
     }
   }
 };
 
-module.exports = rotationPoint;
+const words2 = [
+  "ptolemaic",
+  "retrograde",
+  "supplant",
+  "undulate",
+  "xenoepist",
+  "asymptote", // <-- rotates here!
+  "banoffee",
+  "engender",
+  "karpatka",
+  "othellolagkage",
+];
 
 const words = [
-  "retrograde",
-  "retrograde",
+  "kanika",
+  "lando",
+  "manasi",
+  "nachiket",
+  "ptolemaic",
   "retrograde",
   "supplant",
   "undulate",
@@ -34,7 +54,8 @@ const words = [
   "engender",
   "karpatka",
   "othellolagkage",
-  "zenoepist",
 ];
 
 console.log(rotationPoint(words));
+console.log(rotationPoint(words2));
+module.exports = rotationPoint;
