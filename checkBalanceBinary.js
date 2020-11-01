@@ -17,46 +17,35 @@ class BinaryTreeNode {
   }
 }
 
-const topBranch = new BinaryTreeNode(5);
-topBranch.insertLeft(4);
-topBranch.insertRight(6);
+const isBinaryBalance = (treeRoot) => {
+  const nodeAndBoundStack = [];
+  nodeAndBoundStack.push({
+    node: treeRoot,
+    lowerBound: Number.NEGATIVE_INFINITY,
+    upperBound: Number.POSITIVE_INFINITY,
+  });
 
-const leftBranch = topBranch.left;
-const rightBranch = topBranch.right;
+  while (nodeAndBoundStack.length) {
+    const { node, lower, upper } = nodeAndBoundStack.pop();
 
-rightBranch.insertRight(1);
-rightBranch.insertLeft(100);
-
-let arrayofBranches = [topBranch];
-let answer = [];
-
-const checkLeaf = (node) => {
-  if (!node.left && !node.right) {
-    return true;
-  }
-  return false;
-};
-
-const checkEachSide = (tree) => {
-  if (tree.left.value < tree.value && tree.right.value > tree.value) {
-    return true;
-  }
-  return false;
-};
-
-while (arrayofBranches.length > 0) {
-  let currentNode = arrayofBranches.pop();
-  if (checkLeaf(currentNode)) {
-    console.log('Found a leaf!');
-  } else {
-    answer.push(checkEachSide(currentNode));
-    if (currentNode.left) {
-      arrayofBranches.push(currentNode.left);
+    if (node.value < lower || node.value > upper) {
+      return false;
     }
-    if (currentNode.right) {
-      arrayofBranches.push(currentNode.right);
+
+    if (node.left) {
+      nodeAndBoundStack.push({
+        node: node.left,
+        lowerBound,
+        upperBound: node.value,
+      });
+    }
+    if (node.right) {
+      nodeAndBoundStack.push({
+        node: node.right,
+        lowerBound: node.value,
+        upperBound,
+      });
     }
   }
-}
-
-console.log(answer);
+  return true;
+};
