@@ -13,3 +13,4 @@ Some files contain a TS and a Vanilla JS version and has comments to indicate th
 - [ ] Breadth First Search
 - [ ] Depth First Search
 - [ ] Dynamic Programming
+- [ ] Linked Lists
