@@ -18,3 +18,15 @@ const sumofArray = (arr) => {
 };
 
 console.log(sumofArray([1, 2, 3, 4, 5]));
+
+const countofNumbers = (arr) => {
+  var temp = [...arr];
+  if (temp.length === 1) {
+    return 1;
+  } else {
+    temp = temp.splice(0, temp.length - 1);
+    return 1 + countofNumbers(temp);
+  }
+};
+
+console.log(countofNumbers([1, 2, 3, 4, 5]));
