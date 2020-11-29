@@ -10,8 +10,8 @@ const b = new Node('b');
 const c = new Node('c');
 a.connections.push(b);
 a.connections.push(c);
-x = new Node('finish');
-c.connections.push(x);
+//x = new Node('finish');
+//c.connections.push(x);
 
 let current = a;
 let visited = [];
@@ -25,4 +25,14 @@ while (current.value !== 'finish') {
   i++;
 }
 
-console.log(visited);
+const graph = {};
+graph['you'] = ['alice', 'claire', 'bob'];
+graph['bob'] = ['anuj', 'peggy'];
+graph['alice'] = ['peggy'];
+graph['claire'] = ['thom', 'jonny'];
+graph['anuj'] = [];
+graph['peggy'] = [];
+graph['thom'] = [];
+graph['jonny'] = [];
+
+console.log(finalArr);
