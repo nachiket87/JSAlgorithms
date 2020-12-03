@@ -30,5 +30,3 @@ function getPermutations(string) {
   );
   return permutations;
 }
-
-getPermutations('cat');
