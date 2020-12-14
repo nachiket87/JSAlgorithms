@@ -1,4 +1,4 @@
-const fibo = (n) => {
+const fibonnaci = (n) => {
   let a = 1;
   let b = 0;
   let temp = 0;
