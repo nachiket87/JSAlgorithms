@@ -4,30 +4,29 @@
 let knapsack = 4; // this is the total weight of the knapsack
 
 const items = [
-  { name: 'sterio', price: 3000, weight: 4 },
-  { name: 'laptop', price: 2000, weight: 3 },
   { name: 'guitar', price: 1500, weight: 1 },
+  { name: 'laptop', price: 2000, weight: 3 },
+  { name: 'sterio', price: 3000, weight: 4 },
 ];
-const what = [0];
 
-const function_name = () => {
-  const arr = [];
-  const checkifFits = (item, knapsack) => {
-    if (knapsack < item.weight) {
-      return [arr, { weightleft: knapsack }];
-    }
-    if (item.weight <= knapsack) {
-      arr.push([item.name, item.price]);
-      return checkifFits(item, knapsack - item.weight);
-    }
-  };
-  return checkifFits;
-};
+// let's make a grid of things
 
-const x = function_name();
+/* 
+[...each item that fits] ...  number of mini knapsacks
+*/
 
-console.log(x(items[0], 4));
+let a = [];
+let b = Array(knapsack).fill(0);
+let c = [];
 
-for (item of items) {
-  console.log(x(item, knapsack));
+// i is item
+// j is weight
+
+for (let i = 0; i < items.length; i++) {
+  for (let j = 0; j < knapsack; j++) {
+    if (items[i].weight <= j + 1) b[j] = Math.max(b[j], items[i].price);
+  }
+  a.push(b);
 }
+
+console.log(a);
