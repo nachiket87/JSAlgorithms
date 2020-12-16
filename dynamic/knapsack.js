@@ -1,32 +1,42 @@
 // Knapsack problem. Sterio = {3000, 4 lb}, laptop = {2000, 3lb}, guitar = {1500, 1lb}
 // how can you steal maximum worth if you have a knapsack that can carry 4 lbs
 
-let knapsack = 4; // this is the total weight of the knapsack
-
-const items = [
-  { name: 'guitar', price: 1500, weight: 1 },
-  { name: 'laptop', price: 2000, weight: 3 },
-  { name: 'sterio', price: 3000, weight: 4 },
+const [values, weights, maxWeightConstraint] = [
+  [3000, 2000, 1500],
+  [4, 3, 1],
+  4,
 ];
 
-// let's make a grid of things
+const knapsack = (values, weights, maxWeightConstraint) => {
+  return knapsackHelper(values, weights, maxWeightConstraint, values.length);
+};
 
-/* 
-[...each item that fits] ...  number of mini knapsacks
-*/
-
-let a = [];
-let b = Array(knapsack).fill(0);
-let c = [];
-
-// i is item
-// j is weight
-
-for (let i = 0; i < items.length; i++) {
-  for (let j = 0; j < knapsack; j++) {
-    if (items[i].weight <= j + 1) b[j] = Math.max(b[j], items[i].price);
+const knapsackHelper = (values, weights, maxWeightConstraint, totalItems) => {
+  if (totalItems == 0 || maxWeightConstraint === 0) {
+    return 0;
   }
-  a.push(b);
-}
 
-console.log(a);
+  const currentItemIndex = totalItems - 1;
+  if (weights[currentItemIndex] > maxWeightConstraint) {
+    return knapsackHelper(values, weights, maxWeightConstraint, totalItems - 1);
+  }
+
+  const withItem =
+    values[currentItemIndex] +
+    knapsackHelper(
+      values,
+      weights,
+      maxWeightConstraint - weights[currentItemIndex],
+      totalItems - 1
+    );
+  const withoutItem = knapsackHelper(
+    values,
+    weights,
+    maxWeightConstraint,
+    totalItems - 1
+  );
+
+  return Math.max(withItem, withoutItem);
+};
+
+console.log(knapsack(values, weights, maxWeightConstraint));
