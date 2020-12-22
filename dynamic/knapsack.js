@@ -4,7 +4,7 @@
 const [values, weights, maxWeightConstraint] = [
   [3000, 2000, 1500],
   [4, 3, 1],
-  4,
+  5,
 ];
 
 const knapsack = (values, weights, maxWeightConstraint) => {
